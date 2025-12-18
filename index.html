@@ -114,17 +114,46 @@
 <body>
     <div id="error-log"></div>
     <div id="ui-layer">
-        <div id="status" class="badge" style="position: fixed; top: 40px; left: 50%; transform: translateX(-50%);">
-            🎄  Giáng Sinh An Lành 🎄
+        <div id="status" class="badge" style="
+        position: fixed;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 90%;
+        text-align: center;
+        font-size: clamp(14px, 3vw, 20px);
+    ">
+            🎄 Giáng Sinh An Lành 🎄
         </div>
 
-        <div class="guide" style="position: fixed; bottom: 0px; left: 50%; transform: translateX(-50%);">
+        <div class="guide" style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 8px 10px;
+        box-sizing: border-box;
+        font-size: clamp(12px, 3vw, 16px);
+        line-height: 1.4;
+    ">
             🖐 <b>Xòe:</b> Bung Quà & Đèn &nbsp;|&nbsp;
             👌 <b>Pinch:</b> Xem ảnh &nbsp;|&nbsp;
             ✊ <b>Nắm:</b> Thu cây
         </div>
-        <button id="btnStart" onclick="startSystem()"
-            style="position: fixed; bottom: 50px; left: 0; right: 0; margin: auto; width: fit-content;">BẮT ĐẦU</button>
+        
+        <button id="btnStart" onclick="startSystem()" style="
+        position: fixed;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: fit-content;
+        padding: 10px 20px;
+        font-size: clamp(14px, 3vw, 18px);
+    ">
+            BẮT ĐẦU
+        </button>
     </div>
 
     <div id="canvas-container"></div>
