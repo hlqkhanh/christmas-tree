@@ -49,6 +49,35 @@
             letter-spacing: 1px;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
             text-shadow: 0 0 10px #FFD700;
+
+            position: fixed;
+            top: 40px;
+            /* Cách đỉnh 40px */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            white-space: nowrap;
+        }
+
+
+
+        .bottom-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 20px;
+            /* Khoảng cách an toàn mặc định */
+
+            /* Hỗ trợ iPhone đời mới (có thanh gạt home) */
+            padding-bottom: calc(20px + env(safe-area-inset-bottom));
+            z-index: 100;
+            pointer-events: none;
+            /* Để bấm xuyên qua vùng trống nếu cần */
         }
 
         .guide {
@@ -56,6 +85,8 @@
             font-size: 13px;
             margin-bottom: 20px;
             text-shadow: 0 2px 4px black;
+            text-align: center;
+            padding: 8px 15px;
         }
 
         button {
@@ -70,7 +101,34 @@
             font-size: 16px;
             box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
             animation: pulse 1.5s infinite;
+            margin-bottom: 15px;
+            /* Cách phần hướng dẫn bên dưới */
+            transition: transform 0.2s;
         }
+
+        /* Màn hình nhỏ (Điện thoại dọc) */
+        @media (max-width: 480px) {
+            .badge {
+                top: 20px;
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+
+            #btnStart {
+                font-size: 16px;
+                padding: 10px 25px;
+            }
+
+            .guide {
+                font-size: 12px;
+                width: 100%;
+                border-radius: 0;
+                /* Full màn hình thì bỏ bo góc */
+                background: rgba(0, 0, 0, 0.8);
+            }
+        }
+
+
 
         @keyframes pulse {
             0% {
@@ -114,46 +172,22 @@
 <body>
     <div id="error-log"></div>
     <div id="ui-layer">
-        <div id="status" class="badge" style="
-        position: fixed;
-        top: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        max-width: 90%;
-        text-align: center;
-        font-size: clamp(14px, 3vw, 20px);
-    ">
-            🎄 Giáng Sinh An Lành 🎄
+        <div id="status" class="badge">
+            🎄 GIÁNG SINH AN LÀNH 🎄
         </div>
 
-        <div class="guide" style="
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        padding: 8px 10px;
-        box-sizing: border-box;
-        font-size: clamp(12px, 3vw, 16px);
-        line-height: 1.4;
-    ">
-            🖐 <b>Xòe:</b> Bung Quà & Đèn &nbsp;|&nbsp;
-            👌 <b>Pinch:</b> Xem ảnh &nbsp;|&nbsp;
-            ✊ <b>Nắm:</b> Thu cây
+        <div class="bottom-controls">
+            <button id="btnStart" onclick="startSystem()">BẮT ĐẦU</button>
+
+            <div class="guide">
+                <span>🖐 <b>Xòe:</b> Bung Quà & Đèn</span>
+                <span>|</span>
+                <span>👌 <b>Pinch:</b> Xem ảnh</span>
+                <span>|</span>
+                <span>✊ <b>Nắm:</b> Thu cây</span>
+            </div>
         </div>
-        
-        <button id="btnStart" onclick="startSystem()" style="
-        position: fixed;
-        bottom: 60px;
-        left: 0;
-        right: 0;
-        margin: auto;
-        width: fit-content;
-        padding: 10px 20px;
-        font-size: clamp(14px, 3vw, 18px);
-    ">
-            BẮT ĐẦU
-        </button>
+
     </div>
 
     <div id="canvas-container"></div>
